@@ -1,0 +1,44 @@
+{
+	"name"            : "async-eventer",
+	"description"     : "A tiny library with asynchronous Promise-based implementation of events dispatching and handling",
+	"keywords"        : [
+		"event",
+		"handle",
+		"dispatch",
+		"promise",
+		"async",
+		"asynchronous"
+	],
+	"version"         : "1.0.0",
+	"homepage"        : "https://github.com/nazar-pc/async-eventer",
+	"author"          : {
+		"name"  : "Nazar Mokrynskyi",
+		"email" : "nazar@mokrynskyi.com",
+		"url"   : "https://cleverstyle.org"
+	},
+	"repository"      : {
+		"type" : "git",
+		"url"  : "git://github.com/nazar-pc/async-eventer.git"
+	},
+	"licenses"        : [
+		{
+			"type" : "MIT",
+			"url"  : "https://github.com/nazar-pc/async-eventer/blob/master/license.txt"
+		}
+	],
+	"bugs"            : "https://github.com/nazar-pc/async-eventer/issues",
+	"docs"            : "https://github.com/nazar-pc/async-eventer",
+	"main"            : "src/index.js",
+	"files"           : [
+		"src"
+	],
+	"scripts"         : {
+		"test"   : "tape tests/**/*.js",
+		"minify" : "gulp minify"
+	},
+	"devDependencies" : {
+		"google-closure-compiler-js" : "^20170910.0.0",
+		"gulp"                       : "^3.9.1",
+		"tape"                       : "^4.7.0"
+	}
+}
