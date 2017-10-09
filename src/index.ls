@@ -63,7 +63,9 @@ Eventer:: =
 					Promise.reject()
 				else
 					result
-		result_promise.catch(->) # Just to avoid unhandled promise rejection
+		result_promise.catch (error) !->
+			if error instanceof Error
+				console.error(error)
 		result_promise
 
 if typeof define == 'function' && define.amd

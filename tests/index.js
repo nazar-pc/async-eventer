@@ -71,7 +71,7 @@
                 t.equal(result.join(', '), [1, 2, 3].join(', '), 'false prevents further event handlers execution');
                 result = [];
                 return_2 = '';
-                return_3 = Promise.reject('x');
+                return_3 = Promise.reject();
                 instance.fire('event_3')['catch'](function(){
                   var data_1, data_2;
                   t.equal(result.join(', '), [1, 2, 3].join(', '), "rejected Promise also prevents further event handlers execution");

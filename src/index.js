@@ -83,7 +83,11 @@
           }
         });
       });
-      result_promise['catch'](function(){});
+      result_promise['catch'](function(error){
+        if (error instanceof Error) {
+          console.error(error);
+        }
+      });
       return result_promise;
     }
   };
