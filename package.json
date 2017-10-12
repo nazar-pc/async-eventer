@@ -9,7 +9,7 @@
 		"async",
 		"asynchronous"
 	],
-	"version"         : "1.1.0",
+	"version"         : "1.1.1",
 	"homepage"        : "https://github.com/nazar-pc/async-eventer",
 	"author"          : {
 		"name"  : "Nazar Mokrynskyi",
@@ -37,7 +37,7 @@
 		"minify" : "gulp minify"
 	},
 	"devDependencies" : {
-		"google-closure-compiler-js" : "^20170910.0.0",
+		"google-closure-compiler-js" : "^20170910.0.1",
 		"gulp"                       : "^3.9.1",
 		"tape"                       : "^4.7.0"
 	}
