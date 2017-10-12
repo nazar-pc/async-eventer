@@ -18,9 +18,9 @@
   Eventer.prototype = {
     /**
      * @param {string}		event
-     * @param {Function}	callback
+     * @param {!Function}	callback
      *
-     * @return {Eventer}
+     * @return {!Eventer}
      */
     'on': function(event, callback){
       var ref$;
@@ -31,9 +31,9 @@
     }
     /**
      * @param {string}		event
-     * @param {Function}	[callback]
+     * @param {!Function}	[callback]
      *
-     * @return {Eventer}
+     * @return {!Eventer}
      */,
     'off': function(event, callback){
       var callbacks;
@@ -47,9 +47,9 @@
     }
     /**
      * @param {string}		event
-     * @param {Function}	callback
+     * @param {!Function}	callback
      *
-     * @return {Eventer}
+     * @return {!Eventer}
      */,
     'once': function(event, callback){
       var callback_, this$ = this;
@@ -66,7 +66,7 @@
      * @param {string}	event
      * @param {...*}	param
      *
-     * @return {Promise}
+     * @return {!Promise}
      */,
     'fire': function(event, param){
       var result_promise, params;

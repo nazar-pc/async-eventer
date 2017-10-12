@@ -15,9 +15,9 @@
 Eventer:: =
 	/**
 	 * @param {string}		event
-	 * @param {Function}	callback
+	 * @param {!Function}	callback
 	 *
-	 * @return {Eventer}
+	 * @return {!Eventer}
 	 */
 	'on' : (event, callback) ->
 		if event && callback
@@ -25,9 +25,9 @@ Eventer:: =
 		@
 	/**
 	 * @param {string}		event
-	 * @param {Function}	[callback]
+	 * @param {!Function}	[callback]
 	 *
-	 * @return {Eventer}
+	 * @return {!Eventer}
 	 */
 	'off' : (event, callback) ->
 		callbacks	= @_callbacks[event]
@@ -36,9 +36,9 @@ Eventer:: =
 		@
 	/**
 	 * @param {string}		event
-	 * @param {Function}	callback
+	 * @param {!Function}	callback
 	 *
-	 * @return {Eventer}
+	 * @return {!Eventer}
 	 */
 	'once' : (event, callback) ->
 		if event && callback
@@ -51,7 +51,7 @@ Eventer:: =
 	 * @param {string}	event
 	 * @param {...*}	param
 	 *
-	 * @return {Promise}
+	 * @return {!Promise}
 	 */
 	'fire' : (event, param) ->
 		result_promise	= Promise.resolve()
