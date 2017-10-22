@@ -98,6 +98,6 @@
   } else if (typeof exports === 'object') {
     module.exports = Eventer;
   } else {
-    this.async_eventer = Eventer;
+    this['async_eventer'] = Eventer;
   }
 }).call(this);

@@ -9,7 +9,7 @@
 		"async",
 		"asynchronous"
 	],
-	"version"         : "1.1.1",
+	"version"         : "1.1.2",
 	"homepage"        : "https://github.com/nazar-pc/async-eventer",
 	"author"          : {
 		"name"  : "Nazar Mokrynskyi",

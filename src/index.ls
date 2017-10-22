@@ -76,4 +76,4 @@ else if typeof exports == 'object'
 	module.exports = Eventer
 else
 	# Browser globals
-	@async_eventer = Eventer
+	@'async_eventer' = Eventer
