@@ -68,7 +68,7 @@ Eventer:: =
 				console.error(error)
 		result_promise
 
-if typeof define == 'function' && define.amd
+if typeof define == 'function' && define['amd']
 	# AMD
 	define(-> Eventer)
 else if typeof exports == 'object'

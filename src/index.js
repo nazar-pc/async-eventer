@@ -91,7 +91,7 @@
       return result_promise;
     }
   };
-  if (typeof define === 'function' && define.amd) {
+  if (typeof define === 'function' && define['amd']) {
     define(function(){
       return Eventer;
     });
