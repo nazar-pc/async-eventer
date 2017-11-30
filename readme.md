@@ -1,4 +1,4 @@
-# Async eventer
+# Async eventer [![Travis CI](https://img.shields.io/travis/nazar-pc/async-eventer/master.svg?label=Travis%20CI)](https://travis-ci.org/nazar-pc/async-eventer)
 A tiny library with asynchronous Promise-based implementation of events dispatching and handling.
 
 This library works in Node and in Browser environments (UMD) and is optimized for very small size (under 1000 bytes raw, under 500 bytes gz).
