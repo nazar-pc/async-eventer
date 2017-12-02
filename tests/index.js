@@ -95,4 +95,14 @@
       });
     });
   });
+  test('Multiple calls', function(t){
+    var instance;
+    t.plan(1);
+    instance = Eventer();
+    instance.once('event', function(){
+      t.pass('Dispatched');
+    });
+    instance.fire('event');
+    instance.fire('event');
+  });
 }).call(this);

@@ -91,3 +91,16 @@ test('Basic usage', (t) !->
 	t.equal(data_2.y, 'y', 'Second argument is fine')
 	instance.off('event_4')
 )
+
+test('Multiple calls', (t) !->
+	t.plan(1)
+
+	instance = Eventer()
+
+	instance.once('event', !->
+		t.pass('Dispatched')
+	)
+
+	instance.fire('event')
+	instance.fire('event')
+)

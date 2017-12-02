@@ -43,6 +43,9 @@ Eventer:: =
 	'once' : (event, callback) ->
 		if event && callback
 			callback_ = ~>
+				if callback_.used
+					return
+				callback_.used	= true
 				@off(event, callback_)
 				callback(...&)
 			@on(event, callback_)
