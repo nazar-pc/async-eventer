@@ -9,25 +9,14 @@
 		"async",
 		"asynchronous"
 	],
-	"version"         : "1.1.4",
+	"version"         : "1.1.5",
 	"homepage"        : "https://github.com/nazar-pc/async-eventer",
-	"author"          : {
-		"name"  : "Nazar Mokrynskyi",
-		"email" : "nazar@mokrynskyi.com",
-		"url"   : "https://cleverstyle.org"
-	},
+	"author"          : "Nazar Mokrynskyi <nazar@mokrynskyi.com>",
 	"repository"      : {
 		"type" : "git",
 		"url"  : "git://github.com/nazar-pc/async-eventer.git"
 	},
-	"licenses"        : [
-		{
-			"type" : "MIT",
-			"url"  : "https://github.com/nazar-pc/async-eventer/blob/master/license.txt"
-		}
-	],
-	"bugs"            : "https://github.com/nazar-pc/async-eventer/issues",
-	"docs"            : "https://github.com/nazar-pc/async-eventer",
+	"license"         : "0BSD",
 	"main"            : "src/index.js",
 	"files"           : [
 		"src"
@@ -37,8 +26,7 @@
 		"minify" : "gulp minify"
 	},
 	"devDependencies" : {
-		"google-closure-compiler-js" : "^20170910.0.1",
-		"gulp"                       : "^3.9.1",
-		"tape"                       : "^4.8.0"
+		"build-gc" : "^0.1.1",
+		"tape"     : "^4.8.0"
 	}
 }
