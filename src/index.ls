@@ -46,9 +46,9 @@ Eventer:: =
 				if callback_.used
 					return
 				callback_.used	= true
-				@off(event, callback_)
+				@'off'(event, callback_)
 				callback(...&)
-			@on(event, callback_)
+			@'on'(event, callback_)
 		@
 	/**
 	 * @param {string}	event

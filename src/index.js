@@ -59,10 +59,10 @@
             return;
           }
           callback_.used = true;
-          this$.off(event, callback_);
+          this$['off'](event, callback_);
           return callback.apply(null, arguments);
         };
-        this.on(event, callback_);
+        this['on'](event, callback_);
       }
       return this;
     }
