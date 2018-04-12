@@ -3,13 +3,14 @@
  * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
  * @license 0BSD
  */
+callbacks_map	= new WeakMap
 /**
  * @constructor
  */
 !function Eventer
 	if !(@ instanceof Eventer)
 		return new Eventer
-	@_callbacks	= {}
+	callbacks_map.set(@, {})
 
 Eventer:: =
 	/**
@@ -20,7 +21,7 @@ Eventer:: =
 	 */
 	'on' : (event, callback) ->
 		if event && callback
-			@_callbacks[][event].push(callback)
+			callbacks_map.get(@)[][event].push(callback)
 		@
 	/**
 	 * @param {string}		event
@@ -29,7 +30,7 @@ Eventer:: =
 	 * @return {!Eventer}
 	 */
 	'off' : (event, callback) ->
-		callbacks	= @_callbacks[event]
+		callbacks	= callbacks_map.get(@)[event]
 		if callbacks
 			callbacks.splice(callbacks.indexOf(callback), if callback then 1 else callbacks.length)
 		@
@@ -58,7 +59,7 @@ Eventer:: =
 	'fire' : (event, param) ->
 		result_promise	= Promise.resolve()
 		params			= &
-		(@_callbacks[event] || []).forEach (callback) !->
+		(callbacks_map.get(@)[event] || []).forEach (callback) !->
 			result_promise	:= result_promise.then ->
 				result	= callback.call(...params)
 				if result == false

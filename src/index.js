@@ -5,6 +5,8 @@
  * @license 0BSD
  */
 (function(){
+  var callbacks_map;
+  callbacks_map = new WeakMap;
   /**
    * @constructor
    */
@@ -12,7 +14,7 @@
     if (!(this instanceof Eventer)) {
       return new Eventer;
     }
-    this._callbacks = {};
+    callbacks_map.set(this, {});
   }
   Eventer.prototype = {
     /**
@@ -24,7 +26,7 @@
     'on': function(event, callback){
       var ref$;
       if (event && callback) {
-        ((ref$ = this._callbacks)[event] || (ref$[event] = [])).push(callback);
+        ((ref$ = callbacks_map.get(this))[event] || (ref$[event] = [])).push(callback);
       }
       return this;
     }
@@ -36,7 +38,7 @@
      */,
     'off': function(event, callback){
       var callbacks;
-      callbacks = this._callbacks[event];
+      callbacks = callbacks_map.get(this)[event];
       if (callbacks) {
         callbacks.splice(callbacks.indexOf(callback), callback
           ? 1
@@ -75,7 +77,7 @@
       var result_promise, params;
       result_promise = Promise.resolve();
       params = arguments;
-      (this._callbacks[event] || []).forEach(function(callback){
+      (callbacks_map.get(this)[event] || []).forEach(function(callback){
         result_promise = result_promise.then(function(){
           var result;
           result = callback.call.apply(callback, params);
