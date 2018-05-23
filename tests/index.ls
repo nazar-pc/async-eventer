@@ -103,3 +103,28 @@ test('Multiple calls', (t) !->
 	instance.fire('event')
 	instance.fire('event')
 )
+
+test('off after once calls', (t) !->
+	instance = Eventer()
+
+	!function callback
+		t.fail('Dispatched')
+	instance.once('event', callback)
+	instance.off('event', callback)
+
+	instance.fire('event')
+	t.end()
+)
+
+test('off for non-existing callback', (t) !->
+	t.plan(1)
+
+	instance = Eventer()
+
+	instance.once('event', !->
+		t.pass('Dispatched')
+	)
+	instance.off('event', ->)
+
+	instance.fire('event')
+)

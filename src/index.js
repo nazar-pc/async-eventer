@@ -5,8 +5,9 @@
  * @license 0BSD
  */
 (function(){
-  var callbacks_map;
+  var callbacks_map, callbacks_aliases;
   callbacks_map = new WeakMap;
+  callbacks_aliases = new WeakMap;
   /**
    * @constructor
    */
@@ -37,12 +38,18 @@
      * @return {!Eventer}
      */,
     'off': function(event, callback){
-      var callbacks;
+      var callbacks, real_callback, index;
       callbacks = callbacks_map.get(this)[event];
       if (callbacks) {
-        callbacks.splice(callbacks.indexOf(callback), callback
-          ? 1
-          : callbacks.length);
+        if (callback) {
+          real_callback = callbacks_aliases.get(callback) || callback;
+          index = callbacks.indexOf(real_callback);
+          if (index !== -1) {
+            callbacks.splice(index, 1);
+          }
+        } else {
+          delete callbacks_map.get(this)[event];
+        }
       }
       return this;
     }
@@ -63,6 +70,7 @@
           this$['off'](event, callback_);
           return callback.apply(null, arguments);
         };
+        callbacks_aliases.set(callback, callback_);
         this['on'](event, callback_);
       }
       return this;

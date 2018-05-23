@@ -3,7 +3,8 @@
  * @author  Nazar Mokrynskyi <nazar@mokrynskyi.com>
  * @license 0BSD
  */
-callbacks_map	= new WeakMap
+callbacks_map		= new WeakMap
+callbacks_aliases	= new WeakMap
 /**
  * @constructor
  */
@@ -32,7 +33,14 @@ Eventer:: =
 	'off' : (event, callback) ->
 		callbacks	= callbacks_map.get(@)[event]
 		if callbacks
-			callbacks.splice(callbacks.indexOf(callback), if callback then 1 else callbacks.length)
+			if callback
+				# Support `off` for event handlers registered with `once`
+				real_callback	= callbacks_aliases.get(callback) || callback
+				index			= callbacks.indexOf(real_callback)
+				if index != -1
+					callbacks.splice(index, 1)
+			else
+				delete callbacks_map.get(@)[event]
 		@
 	/**
 	 * @param {string}		event
@@ -48,6 +56,7 @@ Eventer:: =
 				callback_.used	= true
 				@'off'(event, callback_)
 				callback(...&)
+			callbacks_aliases.set(callback, callback_)
 			@'on'(event, callback_)
 		@
 	/**

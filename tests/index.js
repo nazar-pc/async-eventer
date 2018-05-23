@@ -104,4 +104,25 @@
     instance.fire('event');
     instance.fire('event');
   });
+  test('off after once calls', function(t){
+    var instance;
+    instance = Eventer();
+    function callback(){
+      t.fail('Dispatched');
+    }
+    instance.once('event', callback);
+    instance.off('event', callback);
+    instance.fire('event');
+    t.end();
+  });
+  test('off for non-existing callback', function(t){
+    var instance;
+    t.plan(1);
+    instance = Eventer();
+    instance.once('event', function(){
+      t.pass('Dispatched');
+    });
+    instance.off('event', function(){});
+    instance.fire('event');
+  });
 }).call(this);
